@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="沐樂 Mo Le Hair Salon - 嘉義夜間美髮沙龍。提供專業剪髮、染髮、燙髮、護髮等服務。預約制，享受私密舒適的服務空間。">
+    <title>沐樂 Mo Le Hair Salon | 嘉義夜間美髮沙龍</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@0;1&family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #0A0A0F;
+            color: #E8E8F0;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0A0A0F;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #C8A96E;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4B886;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: all 0.3s ease;
+            background: transparent;
+            padding: 1rem 2rem;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1A1A3E;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #C8A96E;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #0A0A0F;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text p:first-child {
+            font-size: 0.875rem;
+            font-weight: bold;
+            color: #C8A96E;
+        }
+
+        .logo-text p:last-child {
+            font-size: 0.75rem;
+            color: #6B6B85;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #E8E8F0;
+            font-size: 0.875rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #C8A96E;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 5rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #0A0A0F, #0A0A0F, #111118);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24rem;
+            height: 24rem;
+            background: rgba(26, 26, 62, 0.2);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 33%;
+            right: 25%;
+            width: 20rem;
+            height: 20rem;
+            background: rgba(200, 169, 110, 0.1);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 56rem;
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #E8E8F0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #6B6B85;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            padding-top: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .cta-buttons {
+                flex-direction: row;
+            }
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: #22c55e;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #16a34a;
+        }
+
+        .btn-secondary {
+            background-color: rgba(200, 169, 110, 0.2);
+            color: #C8A96E;
+            border: 1px solid rgba(200, 169, 110, 0.5);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(200, 169, 110, 0.3);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(0.5rem); }
+        }
+
+        .scroll-indicator svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #C8A96E;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 1rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: #C8A96E;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: #E8E8F0;
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            background-color: rgba(17, 17, 24, 0.5);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .about-image {
+            position: relative;
+            height: 24rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 10, 15, 0.6), transparent);
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            color: #E8E8F0;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: #6B6B85;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            space-y: 0.75rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            background-color: #C8A96E;
+            border-radius: 50%;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .feature p {
+            color: #E8E8F0;
+            margin: 0;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #0A0A0F;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            position: relative;
+            padding: 1.5rem;
+            background-color: rgba(17, 17, 24, 0.5);
+            border: 1px solid #1A1A3E;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            border-color: rgba(200, 169, 110, 0.5);
+            background-color: rgba(17, 17, 24, 0.8);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background-color: #C8A96E;
+            border-radius: 0.5rem 0 0 0.5rem;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            color: #C8A96E;
+            margin-bottom: 1rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .service-card li {
+            color: #6B6B85;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #6B6B85;
+            border-radius: 50%;
+        }
+
+        .service-price {
+            color: #6B6B85;
+            font-size: 0.875rem;
+            padding-top: 1rem;
+            border-top: 1px solid #1A1A3E;
+            margin-top: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: rgba(17, 17, 24, 0.5);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            auto-rows: 250px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10, 10, 15, 0.6), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Booking Section */
+        .booking {
+            background-color: #0A0A0F;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24rem;
+            height: 24rem;
+            background: rgba(200, 169, 110, 0.15);
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+        }
+
+        .booking-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .booking h2 {
+            font-size: 2.5rem;
+            color: #E8E8F0;
+            margin-bottom: 1.5rem;
+        }
+
+        .booking p {
+            color: #6B6B85;
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .booking-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .booking-buttons {
+                flex-direction: row;
+            }
+        }
+
+        .booking-info {
+            color: #6B6B85;
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0A0A0F;
+            border-top: 1px solid #1A1A3E;
+            padding: 3rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #E8E8F0;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: #6B6B85;
+            font-size: 0.875rem;
+            line-height: 1.8;
+        }
+
+        .footer-divider {
+            border-top: 1px solid #1A1A3E;
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-divider p {
+            color: #6B6B85;
+            font-size: 0.875rem;
+        }
+
+        /* Floating LINE Button */
+        .floating-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 56px;
+            height: 56px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 40;
+        }
+
+        .floating-btn:hover {
+            background-color: #16a34a;
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+
+        .floating-btn svg {
+            width: 32px;
+            height: 32px;
+            color: white;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating LINE Button -->
+    <a href="https://line.me/R/ti/p/@911dchqg" target="_blank" rel="noopener noreferrer" class="floating-btn" title="LINE 預約">
+        <svg fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.365 9.863c.349-1.762.053-3.021-.872-3.837-1.142-.975-3.169-.996-5.429-.064l-.502.23c-.261-.044-.524-.067-.788-.067-4.624 0-8.529 3.073-8.529 6.86 0 1.52.472 2.957 1.302 4.151.225 1.625 1.275 4.308 4.004 5.795.959.524 2.051.788 3.082.788.261 0 .519-.013.773-.038 1.288.838 2.872 1.313 4.589 1.313 4.624 0 8.529-3.073 8.529-6.86 0-2.062-.899-3.949-2.559-5.291zm-9.3 9.863c-.88 0-1.74-.229-2.511-.647-.271-.154-.571-.121-.817.087-.248.211-.338.547-.224.847.396 1.08.981 2.106 1.732 2.967.228.26.079.664-.334.664-.528 0-1.041-.13-1.526-.378-1.894-1.013-2.666-3.215-2.846-4.405-.668-1.034-1.055-2.264-1.055-3.548 0-3.273 3.029-5.931 6.75-5.931.259 0 .516.016.77.047.043.005.086.008.129.008 1.921 0 3.701.703 5.053 1.975.754.645.995 1.602.723 2.844-.319 1.437-1.166 2.872-2.494 4.01-.975.839-2.156 1.461-3.471 1.461z"/>
+        </svg>
+    </a>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">沐</div>
+                <div class="logo-text">
+                    <p>沐樂</p>
+                    <p>Mo Le</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">關於我們</a></li>
+                <li><a href="#services">服務項目</a></li>
+                <li><a href="#gallery">作品集</a></li>
+                <li><a href="#booking">預約</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>夜，才是美麗開始的時刻</h1>
+            <p>嘉義夜間美髮沙龍 · 預約制</p>
+            <div class="cta-buttons">
+                <a href="https://line.me/R/ti/p/@911dchqg" target="_blank" rel="noopener noreferrer" class="btn btn-primary">立即預約 LINE</a>
+                <a href="#services" class="btn btn-secondary">查看服務</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop" alt="Hair salon">
+            </div>
+            <div class="about-content">
+                <p class="section-label">ABOUT US</p>
+                <h2>不只是剪髮，是一種夜晚的儀式</h2>
+                <p>沐樂美髮沙龍成立於夜間，我們相信美麗不只是外表的修飾，更是一種內在的儀式。在嘉義的夜晚，我們以專業的技藝和細膩的服務，為每位客人打造獨特的風格。超過一年的經營經驗，我們深刻理解每位客人的需求，用心雕琢每一個細節。</p>
+                <div class="about-features">
+                    <div class="feature">
+                        <div class="feature-dot"></div>
+                        <p>專業美髮設計師團隊</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-dot"></div>
+                        <p>高級護髮產品與技術</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-dot"></div>
+                        <p>預約制服務，享受私密空間</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <p class="section-label">SERVICES</p>
+            <h2 class="section-title">服務項目</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>剪髮設計</h3>
+                <ul>
+                    <li>女生剪髮</li>
+                    <li>男生剪髮</li>
+                    <li>空氣感剪髮</li>
+                </ul>
+                <p class="service-price">起價 NT$350</p>
+            </div>
+            <div class="service-card">
+                <h3>染髮</h3>
+                <ul>
+                    <li>全染</li>
+                    <li>挑染</li>
+                    <li>漂染</li>
+                    <li>補色</li>
+                </ul>
+                <p class="service-price">起價 NT$350</p>
+            </div>
+            <div class="service-card">
+                <h3>燙髮</h3>
+                <ul>
+                    <li>數位燙</li>
+                    <li>離子燙</li>
+                    <li>自然捲燙</li>
+                </ul>
+                <p class="service-price">起價 NT$350</p>
+            </div>
+            <div class="service-card">
+                <h3>護髮</h3>
+                <ul>
+                    <li>深層護髮</li>
+                    <li>頭皮護理</li>
+                </ul>
+                <p class="service-price">起價 NT$350</p>
+            </div>
+            <div class="service-card">
+                <h3>造型</h3>
+                <ul>
+                    <li>特殊造型</li>
+                    <li>婚禮造型</li>
+                </ul>
+                <p class="service-price">起價 NT$350</p>
+            </div>
+            <div class="service-card">
+                <h3>洗髮</h3>
+                <ul>
+                    <li>精品洗髮</li>
+                    <li>頭皮按摩</li>
+                </ul>
+                <p class="service-price">起價 NT$350</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-header">
+            <p class="section-label">PORTFOLIO</p>
+            <h2 class="section-title">作品集</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&h=600&fit=crop" alt="Gallery 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=600&fit=crop" alt="Gallery 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop" alt="Gallery 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&h=600&fit=crop" alt="Gallery 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=600&fit=crop" alt="Gallery 5">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop" alt="Gallery 6">
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <div class="booking-content">
+            <h2>預約你的夜晚</h2>
+            <p>沐樂採用預約制服務，確保每位客人都能享受最專注的服務與舒適的環境。透過 LINE 聯繫我們，我們會為您安排最合適的時間。</p>
+            <div class="booking-buttons">
+                <a href="https://line.me/R/ti/p/@911dchqg" target="_blank" rel="noopener noreferrer" class="btn btn-primary">LINE 預約</a>
+                <div style="color: #6B6B85;">或</div>
+                <a href="tel:+886523310827" class="btn btn-secondary">電話: (05) 2310827</a>
+            </div>
+            <p class="booking-info">🌙 夜間營業 · 預約制 · 嘉義市</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <div class="logo-icon">沐</div>
+                        <div class="logo-text">
+                            <p>沐樂</p>
+                            <p>Mo Le Hair Salon</p>
+                        </div>
+                    </div>
+                    <p>夜間，才能看見最美的你</p>
+                </div>
+                <div class="footer-section">
+                    <h3>聯絡方式</h3>
+                    <p>📍 嘉義市<br>📞 (05) 2310827<br>💬 LINE: @911dchqg</p>
+                </div>
+                <div class="footer-section">
+                    <h3>營業時間</h3>
+                    <p>🌙 夜間營業<br>預約制服務<br>敬請提前聯繫</p>
+                </div>
+            </div>
+            <div class="footer-divider">
+                <p>© 2024 沐樂 Mo Le Hair Salon. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
